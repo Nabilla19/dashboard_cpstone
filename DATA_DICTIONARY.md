@@ -1,6 +1,6 @@
 # Data Dictionary - MindEase Mental Health Dataset
 
-Dokumen ini adalah panduan teknis yang menjelaskan setiap variabel dalam dataset **MindEase**. Kamus data ini digunakan untuk memastikan konsistensi interpretasi data selama tahap analisis dan pengembangan model Machine Learning.
+Dokumen ini adalah panduan teknis yang menjelaskan setiap variabel dalam dataset MindEase. Kamus data ini digunakan untuk memastikan konsistensi interpretasi data selama tahap analisis dan pengembangan model Machine Learning.
 
 | Nama Kolom | Deskripsi | Tipe Data | Keterangan & Range Nilai |
 | :--- | :--- | :--- | :--- |
