@@ -1,36 +1,34 @@
 # Data Dictionary - MindEase Mental Health Dataset
 
-Dokumen ini menjelaskan struktur data yang digunakan dalam proyek **MindEase Student Mental Health Dashboard**. Dataset ini berisi informasi mengenai kesehatan mental mahasiswa berdasarkan faktor akademik, gaya hidup, dan sosial.
+Dokumen ini adalah panduan teknis yang menjelaskan setiap variabel dalam dataset **MindEase**. Kamus data ini digunakan untuk memastikan konsistensi interpretasi data selama tahap analisis dan pengembangan model Machine Learning.
 
-| Nama Kolom | Deskripsi | Tipe Data | Contoh/Range |
+| Nama Kolom | Deskripsi | Tipe Data | Keterangan & Range Nilai |
 | :--- | :--- | :--- | :--- |
-| `age` | Usia mahasiswa | Integer | 18 - 30 |
-| `gender` | Jenis kelamin mahasiswa | String | Male, Female, Other |
-| `academic_year` | Tahun akademik (semester/tahun ke-n) | Integer | 1, 2, 3, 4 |
-| `study_hours_per_day` | Rata-rata jam belajar per hari | Float | 0 - 12 |
-| `exam_pressure` | Tingkat tekanan ujian (skala 0-10) | Float | 0 - 10 |
-| `academic_performance` | Skor performa akademik | Float | 0 - 100 |
-| `stress_level` | Skor tingkat stres (skala 0-10) | Float | 0 - 10 |
-| `anxiety_score` | Skor tingkat kecemasan | Float | 0 - 10 |
-| `depression_score` | Skor tingkat depresi | Float | 0 - 10 |
-| `sleep_hours` | Rata-rata jam tidur per malam | Float | 0 - 10 |
-| `physical_activity` | Frekuensi aktivitas fisik | Float | 0 - 10 |
-| `social_support` | Skor dukungan sosial yang dirasakan | Float | 0 - 10 |
-| `screen_time` | Durasi waktu layar per hari (jam) | Float | 0 - 24 |
-| `internet_usage` | Durasi penggunaan internet per hari (jam) | Float | 0 - 24 |
-| `financial_stress` | Skor tingkat stres finansial | Float | 0 - 10 |
-| `family_expectation` | Skor tekanan ekspektasi keluarga | Float | 0 - 10 |
-| `burnout_score` | Skor tingkat kejenuhan mental (burnout) | Float | 0 - 10 |
-| `mental_health_index` | Indeks kesehatan mental keseluruhan | Float | 0 - 10 |
-| `risk_level` | **Target Variable**: Klasifikasi risiko | Categorical | Low, Medium, High |
-| `dropout_risk` | Prediksi risiko putus kuliah | Float | 0 - 10 |
+| `age` | Usia responden pada saat pengambilan data. | Integer | Rentang **18 - 30** tahun. |
+| `gender` | Identitas gender responden. | String | Kategori: **Male, Female, Other**. |
+| `academic_year` | Tingkat tahun studi atau semester mahasiswa di universitas. | Integer | Tahun ke **1, 2, 3, atau 4**. |
+| `study_hours_per_day` | Rata-rata waktu yang dihabiskan untuk belajar secara mandiri dalam satu hari. | Float | Satuan **Jam** (0 - 12 jam). |
+| `exam_pressure` | Tingkat tekanan atau beban yang dirasakan akibat ujian atau tugas akademik. | Float | Skala **0 - 10** (10 = Tekanan sangat ekstrem). |
+| `academic_performance` | Nilai rata-rata kumulatif atau skor performa akademik mahasiswa. | Float | Skala **0 - 100** (Persentase pencapaian). |
+| `stress_level` | Indikator tingkat stres emosional yang dirasakan secara keseluruhan. | Float | Skala **0 - 10** (10 = Stres sangat tinggi). |
+| `anxiety_score` | Skor hasil asesmen psikologis untuk mengukur tingkat kecemasan. | Float | Skala **0 - 10** (10 = Kecemasan klinis tinggi). |
+| `depression_score` | Skor hasil asesmen psikologis untuk mengukur indikator gejala depresi. | Float | Skala **0 - 10** (10 = Gejala depresi berat). |
+| `sleep_hours` | Rata-rata durasi tidur efektif yang didapatkan responden setiap malam. | Float | Satuan **Jam** (0 - 10 jam). |
+| `physical_activity` | Frekuensi atau intensitas keterlibatan dalam aktivitas fisik/olahraga. | Float | Skala **0 - 10** (10 = Sangat aktif berolahraga). |
+| `social_support` | Ketersediaan dan kualitas dukungan dari teman, keluarga, atau lingkungan. | Float | Skala **0 - 10** (10 = Dukungan sangat kuat). |
+| `screen_time` | Total waktu yang dihabiskan di depan layar perangkat digital per hari. | Float | Satuan **Jam** (0 - 24 jam). |
+| `internet_usage` | Total waktu penggunaan koneksi internet untuk aktivitas non-studi per hari. | Float | Satuan **Jam** (0 - 24 jam). |
+| `financial_stress` | Tingkat kekhawatiran atau kesulitan terkait kondisi keuangan pribadi/keluarga. | Float | Skala **0 - 10** (10 = Kesulitan finansial berat). |
+| `family_expectation` | Besarnya tekanan yang dirasakan responden akibat ekspektasi dari keluarga. | Float | Skala **0 - 10** (10 = Ekspektasi sangat membebani). |
+| `burnout_score` | Tingkat kelelahan fisik dan mental akibat aktivitas berkepanjangan. | Float | Skala **0 - 10** (10 = Kejenuhan/burnout total). |
+| `mental_health_index` | Skor komposit yang mewakili indeks kesehatan mental secara umum. | Float | Skala **0 - 10** (10 = Kondisi mental sangat sehat). |
+| `risk_level` | **Target Utama**: Klasifikasi tingkat risiko kesehatan mental mahasiswa. | Categorical | **Low** (Rendah), **Medium** (Sedang), **High** (Tinggi). |
+| `dropout_risk` | Estimasi kemungkinan mahasiswa untuk berhenti kuliah berdasarkan faktor terkait. | Float | Skala **0 - 10** (10 = Risiko dropout sangat tinggi). |
 
 ---
 
-## Langkah Kesiapan Model (Model Readiness)
-Untuk memastikan data siap diproses oleh model Machine Learning, langkah-langkah berikut disarankan:
-
-1. **Feature Encoding**: Mengubah kolom kategorikal (`gender`, `risk_level`) menjadi numerik menggunakan *One-Hot Encoding* atau *Label Encoding*.
-2. **Scaling/Normalization**: Karena variabel seperti `academic_performance` (skala 100) dan `stress_level` (skala 10) memiliki rentang yang berbeda, disarankan menggunakan *StandardScaler* atau *MinMaxScaler*.
-3. **Handling Class Imbalance**: Jika distribusi `risk_level` tidak seimbang (misalnya kategori High sangat sedikit), pertimbangkan teknik *SMOTE* atau *Oversampling*.
-4. **Feature Selection**: Berdasarkan EDA, variabel `stress_level`, `anxiety_score`, dan `sleep_hours` adalah fitur yang paling berpengaruh.
+## Catatan Tambahan untuk Kesiapan Model
+Berdasarkan Kamus Data di atas, data sudah siap untuk diproses lebih lanjut karena:
+1. **Struktur Konsisten**: Semua fitur numerik berada pada skala yang jelas (mayoritas 0-10).
+2. **Target Jelas**: Variabel `risk_level` sudah terdefinisi sebagai target klasifikasi.
+3. **Data Bersih**: Tidak ada nilai kosong (*missing values*) yang tersisa dalam dataset ini.
