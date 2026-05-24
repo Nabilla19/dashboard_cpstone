@@ -15,7 +15,8 @@ st.set_page_config(
 # --- DATA LOADING ---
 @st.cache_data
 def load_data():
-    return pd.read_csv("mental_health_featured.csv")
+    # Mengambil dari folder dataset/ sesuai dengan restrukturisasi folder
+    return pd.read_csv("dataset/mental_health_featured.csv")
 
 df = load_data()
 
@@ -193,6 +194,15 @@ with tab1:
         st.image("https://img.freepik.com/free-vector/mental-health-awareness-concept_23-2148531012.jpg", width=300)
 
 with tab2:
+    # --- KPI Metrics to show filter effect ---
+    st.markdown(f"### 📈 Data Summary (Age: {age_f[0]} - {age_f[1]})")
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Total Data", f"{len(filtered_df):,}")
+    m2.metric("High Risk", f"{len(filtered_df[filtered_df['risk_level'] == 'High']):,}")
+    m3.metric("Medium Risk", f"{len(filtered_df[filtered_df['risk_level'] == 'Medium']):,}")
+    m4.metric("Low Risk", f"{len(filtered_df[filtered_df['risk_level'] == 'Low']):,}")
+    st.markdown("---")
+
     # 1. Stress Category Distribution
     st.subheader("Distribusi Kategori Stres")
     fig_stress_cat = px.pie(filtered_df, names="stress_category", hole=0.5,
