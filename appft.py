@@ -155,6 +155,14 @@ st.markdown(f"""
         background-color: white !important;
         color: var(--primary) !important;
     }}
+    
+    /* Fix for st.metric text color on forced white background */
+    [data-testid="stMetricValue"] {{
+        color: #1E293B !important;
+    }}
+    [data-testid="stMetricLabel"] {{
+        color: #64748B !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
